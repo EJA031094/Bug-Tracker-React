@@ -1,25 +1,42 @@
 import './App.css';
-import { Button, Card, CardContent, CardActions, CardHeader, TextField, Typography } from '@mui/material/';
+import { Route, Routes } from 'react-router-dom';
+import { LoginForm } from './components/LoginForm';
+import { MainAppBar } from './components/MainAppBar';
 
 function App() {
   return (
     <div className='App'>
-      <header className='App-header'>
-      <Card className='login-form'>
-        <CardHeader title='Bug Tracker Login' sx={{ backgroundColor:'#3385ff', color: '#ffffff'}}>
-
-        </CardHeader>
-        <CardContent>
-          <TextField id='usernameField' label='Username' variant='outlined' sx={{ width: '100%' , marginBottom: '0.75rem'}}/>
-          <TextField id='passwordField' label='Password' variant='outlined' sx={{ width: '100%' }}/>
-        </CardContent>
-        <CardActions sx={{ justifyContent: 'flex-end' }}>
-          <Button variant='contained' size='medium' sx={{margin: '0.75rem 0.75rem'}}>Login</Button>
-        </CardActions>
-      </Card>
-      </header>
+      <MainAppBar/>
+      <body className='app-body'>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="login" element={<LoginPage />} />
+        </Routes>
+      </body>
     </div>
   );
+}
+
+function Home() {
+  return (
+    <div className='column-display'>
+      <h1>Homepage</h1>
+    </div>
+  );
+}
+
+function LoginPage() {
+  return (
+    <div className='column-display'>
+      <h1>Login Page</h1>
+      <LoginForm/>
+    </div>
+  );
+}
+
+function About() {
+  return <h1>About Page</h1>
 }
 
 export default App;

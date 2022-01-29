@@ -1,29 +1,32 @@
-.App {
+h1 {
+  margin: 0.35rem 0;
   text-align: center;
 }
 
-.App-header {
-  background-color: #6c6d6e;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.app {
+  text-align: center;
 }
 
-.App-link {
+.app-body {
+  align-items: center;
+  background-color: #c0bcbc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app-link {
   color: #61dafb;
 }
 
-.MuiGrid-root {
-  margin-left: 0 !important;
-  margin-top: 0 !important;
+.column-display {
+  display: flex;
+  flex-direction: column;
 }
 
 .login-form {
-  background-color: antiquewhite;
-  border-radius: '0.3rem';
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.3rem;
+  margin: 0.5rem 0.5rem;
   max-width: 300px;
 }
