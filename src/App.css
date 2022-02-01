@@ -1,32 +1,49 @@
+body {
+  background-color: #c0bcbc;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
 h1 {
   margin: 0.35rem 0;
   text-align: center;
 }
 
-.app {
-  text-align: center;
-}
-
 .app-body {
   align-items: center;
-  background-color: #c0bcbc;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
 }
 
-.app-link {
-  color: #61dafb;
+.default-colors {
+  background-color: #3385ff;
+  color: #ffffff;
 }
 
-.column-display {
-  display: flex;
-  flex-direction: column;
+.error-wrapper {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 0.75rem;
 }
 
-.login-form {
+.form-body {
   background-color: rgb(255, 255, 255);
-  border-radius: 0.3rem;
+  border-radius: 0.25rem;
   margin: 0.5rem 0.5rem;
-  max-width: 300px;
+}
+
+.text-field {
+  margin: 0.5rem 0 !important;
+  width: 100%;
 }
