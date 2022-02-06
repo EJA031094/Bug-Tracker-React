@@ -2,8 +2,8 @@ import React from 'react';
 import { Box, Card, CardActions, CardContent, CardHeader } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { BTTextField } from '../components/BTTextField';
-import { ProcessLogin } from './LoginPage';
 import { BTButton } from '../components/BTButton';
+import { CreateUser, ProcessLogin } from '../services/Data';
 
 export function SignUpPage() {
     const navigate = useNavigate();
@@ -13,17 +13,7 @@ export function SignUpPage() {
     const [passwordConfirmation, setPasswordConfirm] = React.useState('');
 
     const submitSignUp = async () => {
-        const reqBody = JSON.stringify({ email, username, password, passwordConfirmation });
-
-        const response = await fetch('http://localhost:4000/api/users/create', {
-            method: 'POST',
-            mode: 'cors',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
-            },
-            body: reqBody
-        });
+        const response = await CreateUser({ email, username, password, passwordConfirmation })
 
         if(response.ok) {
             ProcessLogin(username, password);

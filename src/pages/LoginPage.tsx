@@ -3,12 +3,13 @@ import { Card, CardContent, CardActions, CardHeader, Box } from '@mui/material/'
 import { useNavigate } from 'react-router-dom';
 import { BTTextField } from '../components/BTTextField';
 import { BTButton } from '../components/BTButton';
+import { ProcessLogin } from '../services/Data';
 
 export function LoginPage() {
-    const navigate = useNavigate();
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [inputError, setInputError] = React.useState('');
+    const navigate = useNavigate();
 
     const submitLogin = async () => {
         const response = await ProcessLogin(username, password);
@@ -48,21 +49,4 @@ export function LoginPage() {
             </Card>
         </Box>
     );
-}
-
-//Login function is exported so it can be used on sign up page
-export async function ProcessLogin(username: string, password: string) {
-    const reqBody = JSON.stringify({ username, password });
-
-    const response = await fetch('http://localhost:4000/api/sessions/create', {
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'include',
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8'
-        },
-        body: reqBody
-    });
-
-    return response;
 }
