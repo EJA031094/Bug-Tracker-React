@@ -1,24 +1,17 @@
-import { Project } from "../../models/ProjectModel";
-import { GetProjectById } from "../../services/Data";
+import { Box, Card, CardContent, CardHeader } from "@mui/material";
+import { ProjectDetails } from "../../components/Project/ProjectDetails";
 
-export function ProjectPage(props: { projectId?: string;}) {
+export function ProjectPage({ projectId }: { projectId: string;}) {
+    return(
+        <Box component='div' sx={{ maxWidth:'900px', margin:'2rem 0', width: '100%' }}>
+            <Card className='form-body'>
+                <CardHeader title='Project Details' className='default-colors' />
 
-    const fetchProject = async () => {
-        if(props.projectId === undefined){
-            return null;
-        }
+                <CardContent sx={{display: 'flex', justifyContent: 'center'}}>
+                    <ProjectDetails projectId={ projectId }/>
+                </CardContent>
+            </Card>
 
-        const response = await GetProjectById(props.projectId)
-
-        if(response.ok) {
-            const jsonResponse: Project = await response.json()
-            console.log('Project fetched.', jsonResponse);
-        }
-    }
-
-    fetchProject();
-
-    return (
-        <div> {props.projectId} </div>
+        </Box>
     );
 }

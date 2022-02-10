@@ -62,3 +62,12 @@ export async function GetPublicProjects(): Promise<Response> {
 
     return response;
 }
+
+export async function GetProjectIssues(projectId: string): Promise<Response> {
+    const response = await fetch(`http://localhost:4000/api/issues/getByProjectId?projectId=${ projectId }`, {
+        ...commonHttpSettings,
+        method: 'GET'
+    });
+
+    return response;
+}

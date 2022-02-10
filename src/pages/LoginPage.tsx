@@ -23,7 +23,7 @@ export function LoginPage() {
     }
 
     return (
-        <Box component='div' sx={{ maxWidth:'350px', margin:'2rem 0' }}>
+        <Box component='div' sx={{ maxWidth:'350px', margin:'2rem 0', width: '100%' }}>
             <Card className='form-body'>
                 <CardHeader title='Login' className='default-colors'/>
 

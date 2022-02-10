@@ -1,8 +1,8 @@
 import './App.css';
-import { AppRoutes } from './App.routes';
+import { AppRoutes } from './services/Routes';
 import { MainAppBar } from './components/MainAppBar';
 
-function App() {
+export default function App() {
   return (
     <div>
       <MainAppBar/>
@@ -12,5 +12,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
