@@ -1,4 +1,4 @@
-import MUIDataTable from 'mui-datatables';
+import { Table, TableBody, TableCell, TableHead, TableRow} from "@mui/material";
 import { useEffect, useState } from "react";
 import { Project } from "../../models/ProjectModel";
 import { GetPublicProjects } from "../../services/Data";
@@ -12,6 +12,7 @@ export function ProjectTable() {
 
         if(response.ok) {
             const jsonResponse: Array<Project> = await response.json()
+            console.log(jsonResponse);
 
             setProjectList(jsonResponse);
         }
@@ -21,13 +22,26 @@ export function ProjectTable() {
         getPublicProjects();
     }, []);
 
-    const columns = ['Owner', 'Name', 'Created On', 'Last Activity'];
-
     return (
-        <MUIDataTable 
-            title={'Public Projects'}
-            data={projectList}
-            columns={columns}
-        />
+        <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell>Owner</TableCell>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Created On</TableCell>
+                    <TableCell>Last Activity</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                {projectList.map((project) => (
+                    <TableRow key={project._id}>
+                        <TableCell>{project.ownerName}</TableCell>
+                        <TableCell><a href={'/project?projectId=' + project._id}>{project.name}</a></TableCell>
+                        <TableCell>{project.createdAt}</TableCell>
+                        <TableCell>{project.updatedAt}</TableCell>
+                    </TableRow>
+                ))}
+            </TableBody>
+        </Table>
     );
 }

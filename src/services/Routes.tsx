@@ -2,9 +2,9 @@ import React from "react";
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { HomePage } from '../pages/HomePage';
 import { LoginPage } from '../pages/LoginPage';
-import { CreateProjectPage } from '../pages/Projects/CreateProjectPage';
-import { ProjectListPage } from '../pages/Projects/ProjectListPage';
-import { ProjectPage } from '../pages/Projects/ProjectPage';
+import { CreateProjectPage } from '../pages/Project/CreateProjectPage';
+import { ProjectListPage } from '../pages/Project/ProjectListPage';
+import { ProjectPage } from '../pages/Project/ProjectPage';
 import { SignUpPage } from '../pages/SignUpPage';
 
 //gets query params from current url

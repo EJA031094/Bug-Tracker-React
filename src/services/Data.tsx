@@ -69,5 +69,6 @@ export async function GetProjectIssues(projectId: string): Promise<Response> {
         method: 'GET'
     });
 
+    
     return response;
 }
