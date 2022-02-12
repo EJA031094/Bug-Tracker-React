@@ -1,19 +1,18 @@
-import { Project } from "../../models/ProjectModel";
-import { GetPublicProjects } from "../../services/Data";
+import { Box, Card, CardContent, CardHeader } from "@mui/material";
+import { ProjectTable } from "../../components/Project/ProjectTable";
 
 export function ProjectListPage() {
-    const getPublicProjects = async () => {
-        const response = await GetPublicProjects();
-
-        if(response.ok) {
-            const jsonResponse: Array<Project> = await response.json()
-            console.log('Projects fetched.', jsonResponse);
-        }
-    }
-
-    getPublicProjects();
-
     return (
-        <div>Hello</div>
+        <Box component='div' sx={{ maxWidth:'1000px', margin:'2rem 0', width: '100%' }}>
+            <Card className='form-body'>
+                <CardHeader title='Bug Tracker' className='default-colors' />
+
+                <CardContent>
+                    <Box component='div'>
+                        <ProjectTable />
+                    </Box>
+                </CardContent>
+            </Card>
+        </Box>
     );
 }

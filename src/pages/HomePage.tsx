@@ -8,10 +8,10 @@ export function HomePage() {
 
                 <CardContent>
                     <Box component='div'>
+                        <a href="/project/list/">Browse Public Projects</a>
                     </Box>
                 </CardContent>
             </Card>
-
         </Box>
     )
 }

@@ -3,17 +3,19 @@ import React from "react";
 import { BTTextField } from "../../components/BTTextField";
 import { BTButton } from "../../components/BTButton";
 import { CreateProject } from "../../services/Data";
+import { useNavigate } from "react-router-dom";
 
 export function CreateProjectPage() {
     const [name, setName] = React.useState('');
     const [description, setDescription] = React.useState('');
     const [isPublic, setIsPublic] = React.useState(false);
+    const navigate = useNavigate();
 
     const submitCreateProject = async () => {
         const response = await CreateProject({name, description, isPublic});
 
         if(response.ok) {
-            console.log('Project created.');
+            navigate('/', { replace: true })
         }
     }
 
