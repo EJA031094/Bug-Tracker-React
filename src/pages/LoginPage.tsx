@@ -4,17 +4,25 @@ import { useNavigate } from 'react-router-dom';
 import { BTTextField } from '../components/BTTextField';
 import { BTButton } from '../components/BTButton';
 import { ProcessLogin } from '../services/Data';
+import { useUserContext } from '../services/UserProvider';
+import { UserModel } from '../models/UserModel';
 
 export function LoginPage() {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [inputError, setInputError] = React.useState('');
+    const userContext = useUserContext();
     const navigate = useNavigate();
 
     const submitLogin = async () => {
         const response = await ProcessLogin(username, password);
 
         if(response.ok) {
+            
+            const jsonResponse: UserModel = await response.json();
+
+            userContext?.setUser(jsonResponse);
+
             setInputError('');
             navigate('/', { replace: true });
         } else {

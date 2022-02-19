@@ -1,4 +1,4 @@
-export interface Project {
+export interface ProjectModel {
     _id: string;
     owner: string;
     ownerName: string;
@@ -7,4 +7,10 @@ export interface Project {
     isPublic: boolean;
     createdAt: Date;
     updatedAt: Date;
+}
+
+export interface CreateProjectModel {
+    name: string;
+    description: string;
+    isPublic: boolean;
 }
