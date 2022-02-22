@@ -11,7 +11,7 @@ export function IssuePage({ issueId }:{ issueId: string }) {
     }
 
     return (
-        <Box component='div' sx={{ maxWidth:'1000px', margin:'2rem 0', width: '100%' }}>
+        <Box component='div' sx={{ margin:'2rem 0', maxWidth:'1000px', width: '100%' }}>
             <Card className='form-body'>
                 <CardHeader title='Issue Details' className='default-colors' />
 

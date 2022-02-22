@@ -12,7 +12,7 @@ const commonHttpSettings: RequestInit = {
 }
 
 export async function ProcessLogout(): Promise<Response> {
-    const response = await fetch('http://localhost:4000/api/sessions/logout', {
+    const response = await fetch('http://localhost:4000/api/users/logout', {
         ...commonHttpSettings,
         method: 'POST'
     });
@@ -33,9 +33,7 @@ export async function ProcessLogin(username: string, password: string): Promise<
 }
 
 export async function CreateIssue(inputIssue: CreateIssueModel): Promise<Response> {
-    console.log(inputIssue);
     const reqBody = JSON.stringify(inputIssue);
-    console.log(reqBody);
 
     const response = await fetch('http://localhost:4000/api/issues/create', {
         ...commonHttpSettings,
@@ -82,8 +80,8 @@ export async function CreateUser (inputUser: CreateUserModel): Promise<Response>
     return response;
 }
 
-export async function GetActiveProfile(): Promise<Response> {
-    const response = await fetch(`http://localhost:4000/api/users/getActiveProfile`, {
+export async function GetUserProfile(profileId: string): Promise<Response> {
+    const response = await fetch(`http://localhost:4000/api/users/getProfile?profileId=${ profileId }`, {
         ...commonHttpSettings,
         method: 'GET'
     });

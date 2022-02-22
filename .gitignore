@@ -2,6 +2,7 @@ node_modules
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+/server/node_modules
 /node_modules
 /.pnp
 .pnp.js
@@ -13,6 +14,7 @@ node_modules
 /build
 
 # misc
+/server/config/default.ts
 .DS_Store
 .env.local
 .env.development.local

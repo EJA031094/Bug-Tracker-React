@@ -1,44 +1,8 @@
-import { Box, Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
 import { ProjectModel } from "../../models/ProjectModel";
-import { GetProjectById } from "../../services/Data";
-import { BTLoader } from "../BTLoader";
-import { DisplayError } from "../DisplayError";
 import Moment from 'moment';
 
-export function ProjectDetails({ projectId }:{ projectId: string }) {
-    const [project, setProject] = useState<ProjectModel>();
-    const [isLoading, setIsLoading] = useState<boolean>(true);
-
-    useEffect(() => {
-        const fetchProject = async () => {
-            const response = await GetProjectById(projectId);
-        
-            if(response.ok) {
-                const jsonResponse: ProjectModel = await response.json();
-                setProject(jsonResponse);
-            }
-
-            setIsLoading(false);
-        }
-
-       fetchProject();
-    }, [projectId]);
-
-    if(isLoading) {
-        return (
-            <BTLoader/>
-        );
-    }
-
-    if(project === undefined) {
-        return (
-            <Box sx={{width: '100%', display: 'flex', justifyContent: 'center'}}>
-                <DisplayError message= 'Unable to find Project that matches that ID.'/>
-            </Box>
-        );
-    }
-
+export function ProjectDetails({ project }:{ project: ProjectModel }) {
     return (
         <Card sx={{borderRadius: '0'}}>
             <CardHeader title={<Typography variant='h6'>{ project.name }</Typography>} disableTypography={ true } className='default-colors' sx={{ padding: '0.50rem' }}/>

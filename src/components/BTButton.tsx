@@ -1,17 +1,18 @@
-import { Button } from '@mui/material';
+import { Button, SxProps } from '@mui/material';
 
 interface BTButtonProps {
     text: string;
+    sxProp?: SxProps;
     onClick(): void;
 }
 
-export function BTButton({ text, onClick }: BTButtonProps) {
+export function BTButton({ text, sxProp={}, onClick }: BTButtonProps) {
     return (
         <Button 
             variant='contained' 
             size='medium' 
             onClick={ onClick } 
-            sx={{ margin: '0 0.5rem 0.5rem 0' }}> 
+            sx={{ ...sxProp, margin: '0 0.5rem 0.5rem 0' }}> 
             { text } 
             
         </Button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, CardContent, CardActions, CardHeader, Box } from '@mui/material/';
 import { useNavigate } from 'react-router-dom';
 import { BTTextField } from '../components/BTTextField';
@@ -14,17 +14,26 @@ export function LoginPage() {
     const userContext = useUserContext();
     const navigate = useNavigate();
 
+    useEffect(() => {
+        //user is already logged in, redirect
+        if(userContext?.user !== undefined) {
+            navigate('/');
+        }
+    }, []);
+
     const submitLogin = async () => {
         const response = await ProcessLogin(username, password);
 
         if(response.ok) {
-            
+            setInputError('');
+
             const jsonResponse: UserModel = await response.json();
 
+            //store user in context and localstorage
             userContext?.setUser(jsonResponse);
+            localStorage.setItem('userData', JSON.stringify(jsonResponse));
 
-            setInputError('');
-            navigate('/', { replace: true });
+            navigate('/');
         } else {
             setInputError('Invalid login, please try again.');
         }

@@ -1,5 +1,7 @@
 import { createContext, Dispatch, ReactElement, SetStateAction, useContext, useState } from 'react';
 import { UserModel } from '../models/UserModel';
+import { ProcessLogout } from './Data';
+import { useNavigate } from 'react-router-dom'
 
 export const UserContext = createContext<{
     user: UserModel | undefined,
@@ -12,12 +14,24 @@ export function useUserContext() {
 }
 
 export function UserProvider({children}: {children: ReactElement}) {
-    const [user, setUser] = useState<UserModel | undefined>(undefined);
-    const logoutUser = () => {
+    const storedUser = localStorage.getItem('userData') || '';
+    let userData = undefined;
+
+    if(storedUser !== '') {
+        userData = JSON.parse(storedUser);
+    }
+
+    const [user, setUser] = useState<UserModel | undefined>(userData);
+    const navigate = useNavigate();
+
+    const logoutUser = async () => {
         setUser(undefined);
-        console.log('logged out baby');
     
-        //delete session cookies
+        const response = await ProcessLogout();
+
+        if(response.ok) {
+            navigate('/');
+        }
     }
 
     const value = { user, setUser, logoutUser }
