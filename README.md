@@ -16,3 +16,5 @@ To run the server application on your machine, follow these instructions.
    - DB Connstring pointing to a MongoDB database
    - RSA Public/Private keys
 3) Navigate to the server folder in the terminal and execute 'npm install' and 'npm start'
+
+Live hosted version coming soon!
