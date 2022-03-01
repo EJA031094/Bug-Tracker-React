@@ -19,7 +19,7 @@ export function LoginPage() {
         if(userContext?.user !== undefined) {
             navigate('/');
         }
-    }, []);
+    }, [ navigate, userContext ]);
 
     const submitLogin = async () => {
         const response = await ProcessLogin(username, password);
@@ -53,7 +53,7 @@ export function LoginPage() {
                             <label>{ inputError }</label>
                         </div>
                         
-                        <div style={{ margin: '0', fontSize: '12px' }}>
+                        <div style={{ margin: '0', fontSize: '0.75rem' }}>
                             <p>Don't have an account?</p>
                             <a href='/signup'>Sign Up Here</a>
                         </div>

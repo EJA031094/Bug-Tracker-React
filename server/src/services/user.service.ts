@@ -1,7 +1,8 @@
 import bcrypt from 'bcrypt';
 import config from 'config';
 import { omit } from 'lodash';
-import { FilterQuery } from 'mongoose';
+import mongoose, { FilterQuery } from 'mongoose';
+import { Profile, ProfileModel, UpdateProfileInput } from '../models/profile.model';
 import { UserModel, UserInput, User } from '../models/user.model';
 
 export async function createUser(inputUser: Omit<UserInput, 'passwordConfirmation'>) {
@@ -16,7 +17,34 @@ export async function createUser(inputUser: Omit<UserInput, 'passwordConfirmatio
 
 export async function getUser(query: FilterQuery<User>) {
     try {
-        return UserModel.findOne(query);
+        return UserModel.findById(query);
+    } catch(err: any) {
+        throw new Error(err);
+    }
+}
+
+export async function getUserProfile(query: FilterQuery<Profile>) {
+    try {
+        return ProfileModel.findById(query);
+    } catch(err: any) {
+        throw new Error(err);
+    }
+}
+
+export async function updateUserProfile(profileUpdate: UpdateProfileInput) {
+    try {
+        const { user, hexCode, blurb } = profileUpdate.body;
+        const userId = new mongoose.Types.ObjectId(user);
+
+        return ProfileModel.updateOne({ user: userId, hexCode, blurb });
+    } catch(err: any) {
+        throw new Error(err);
+    }
+}
+
+export async function createUserProfile() {
+    try {
+        return null;
     } catch(err: any) {
         throw new Error(err);
     }
