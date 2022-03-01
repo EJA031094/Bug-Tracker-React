@@ -36,16 +36,16 @@ export function ProfilePage() {
 
     if(isLoading) {
         return (
-            <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <Box className='page-body'>
                 <BTLoader/>
             </Box>
         );
     }
 
     return(
-        <Box component='div' className="page-body">
+        <Box component='div' className='page-body'>
             <Card className='form-body'>
-                <CardHeader title={`${ userContext?.user }`} className='default-colors' />
+                <CardHeader title={`${  }`} className='default-colors' />
 
                 <CardContent>
                     <Box component='div'>
