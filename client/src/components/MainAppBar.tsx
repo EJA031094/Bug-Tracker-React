@@ -20,10 +20,10 @@ export function MainAppBar() {
                     <Button 
                         className='hover-color'
                         color='inherit'
-                        onClick={() => {user === undefined ? navigate('/login') : userContext?.logoutUser()}} 
+                        onClick={() => { user === undefined ? navigate('/login') : userContext?.logoutUser() }} 
                         sx={{ marginRight: '1rem' }}>
 
-                        {user === undefined ? "Login" : "Logout"}
+                        { user === undefined ? "Login" : "Logout" }
                     </Button>
 
                     <IconButton href='/profile/' size='large' edge='start' color='inherit' aria-label='menu'>
