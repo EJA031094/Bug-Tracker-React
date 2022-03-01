@@ -40,7 +40,7 @@ export function LoginPage() {
     }
 
     return (
-        <Box component='div' sx={{ maxWidth:'350px', margin:'2rem 0', width: '100%' }}>
+        <Box component='div' className="page-body" sx={{ maxWidth: '350px' }}>
             <Card className='form-body'>
                 <CardHeader title='Login' className='default-colors'/>
 
@@ -53,7 +53,7 @@ export function LoginPage() {
                             <label>{ inputError }</label>
                         </div>
                         
-                        <div style={{margin: '0',fontSize: '12px'}}>
+                        <div style={{ margin: '0', fontSize: '12px' }}>
                             <p>Don't have an account?</p>
                             <a href='/signup'>Sign Up Here</a>
                         </div>

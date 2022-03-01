@@ -24,7 +24,7 @@ export function CreateProjectPage() {
     };
 
     return(
-        <Box component='div' sx={{ maxWidth:'600px', margin:'2rem 0' }}>
+        <Box component='div' className="page-body">
             <Card className='form-body'>
                 <CardHeader title='Create A Project' className='default-colors' />
 
@@ -33,12 +33,12 @@ export function CreateProjectPage() {
                         <BTTextField value={ name } label='Project Name' onChange={ setName }/>
                         <BTTextField value={ description } label='Project Description' onChange={ setDescription } rows={4}/>
 
-                        <div style={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                        <div className="spaced-flex">
                             <label style={{ fontSize: '0.875rem', fontWeight: 'bold'}}>Public Project</label>
                             <Checkbox onChange={ handleCheckChange }/>
                         </div>
                         
-                        <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+                        <div className="right-flex">
                             <BTButton text='Submit' onClick={ submitCreateProject }/>
                         </div>
                     </Box>

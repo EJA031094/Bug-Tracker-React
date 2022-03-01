@@ -32,23 +32,24 @@ export function ProfilePage() {
         }
 
        fetchProfile();
-    }, []);
+    }, [ navigate, userContext ]);
 
     if(isLoading) {
         return (
-            <Box sx={{width: '100%', display: 'flex', justifyContent: 'center'}}>
+            <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <BTLoader/>
             </Box>
         );
     }
 
     return(
-        <Box component='div' sx={{ maxWidth:'1000px', margin:'2rem 0', width: '100%' }}>
+        <Box component='div' className="page-body">
             <Card className='form-body'>
                 <CardHeader title={`${ userContext?.user }`} className='default-colors' />
 
                 <CardContent>
                     <Box component='div'>
+                        { profile?.blurb }
                     </Box>
                 </CardContent>
             </Card>

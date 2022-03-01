@@ -27,7 +27,7 @@ export function CreateIssuePage({ projectId }: { projectId: string;}) {
     }
 
     return(
-        <Box component='div' sx={{ maxWidth:'1000px', margin:'2rem 0' }}>
+        <Box component='div' sx={{ margin:'2rem 0', maxWidth:'1000px' }}>
             <Card className='form-body'>
                 <CardHeader title={'Create An Issue'} className='default-colors' />
 
@@ -36,7 +36,7 @@ export function CreateIssuePage({ projectId }: { projectId: string;}) {
                         <BTTextField value={ name } label='Issue Name' onChange={ setName }/>
                         <BTTextField value={ description } label='Issue Description' onChange={ setDescription } rows={4}/>
                         
-                        <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+                        <div className="right-flex">
                             <BTButton text='Submit' onClick={ submitCreateIssue }/>
                         </div>
                     </Box>

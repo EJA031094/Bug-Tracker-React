@@ -22,7 +22,7 @@ export function SignUpPage() {
     }
 
     return (
-        <Box component='div' sx={{ maxWidth:'350px', margin:'2rem 0', width: '100%'}}>
+        <Box component='div' className="page-body" sx={{ maxWidth: '350px' }}>
             <Card className='form-body'>
                 <CardHeader title='Create Account' className='default-colors'/>
 
