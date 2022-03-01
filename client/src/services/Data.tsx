@@ -80,8 +80,17 @@ export async function CreateUser (inputUser: CreateUserModel): Promise<Response>
     return response;
 }
 
-export async function GetUserProfile(profileId: string): Promise<Response> {
-    const response = await fetch(`http://localhost:4000/api/users/getProfile?profileId=${ profileId }`, {
+export async function GetUserProfile(userId: string): Promise<Response> {
+    const response = await fetch(`http://localhost:4000/api/users/getProfile?userId=${ userId }`, {
+        ...commonHttpSettings,
+        method: 'GET'
+    });
+
+    return response;
+}
+
+export async function GetUser(userId: string): Promise<Response> {
+    const response = await fetch(`http://localhost:4000/api/users/getUser?userId=${ userId }`, {
         ...commonHttpSettings,
         method: 'GET'
     });

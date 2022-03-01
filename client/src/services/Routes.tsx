@@ -24,7 +24,7 @@ export function AppRoutes() {
     return (
         <Routes>
             <Route path='/signup' element={<SignUpPage/>} />
-            <Route path='/profile' element={<ProfilePage/>} />
+            <Route path='/profile' element={<ProfilePage userId={ query.get('userId') || '' }/>} />
             <Route path='/login' element={<LoginPage/>} />
             <Route path='/' element={<HomePage/>} />
             <Route path='/project/create/' element={<CreateProjectPage/>}/>

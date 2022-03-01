@@ -7,9 +7,14 @@ import { UserModel, UserInput, User } from '../models/user.model';
 
 export async function createUser(inputUser: Omit<UserInput, 'passwordConfirmation'>) {
     try {
+        //encrypt password
         inputUser.password = await hashPassword(inputUser.password);
 
-        return await UserModel.create(inputUser);
+        const user = await UserModel.create(inputUser);
+
+        await createUserProfile(user._id.toString());
+
+        return user;
     } catch(err: any) {
         throw new Error(err);
     }
@@ -17,7 +22,7 @@ export async function createUser(inputUser: Omit<UserInput, 'passwordConfirmatio
 
 export async function getUser(query: FilterQuery<User>) {
     try {
-        return UserModel.findById(query);
+        return await UserModel.findOne(query);
     } catch(err: any) {
         throw new Error(err);
     }
@@ -25,7 +30,7 @@ export async function getUser(query: FilterQuery<User>) {
 
 export async function getUserProfile(query: FilterQuery<Profile>) {
     try {
-        return ProfileModel.findById(query);
+        return await ProfileModel.findOne(query);
     } catch(err: any) {
         throw new Error(err);
     }
@@ -36,15 +41,17 @@ export async function updateUserProfile(profileUpdate: UpdateProfileInput) {
         const { user, hexCode, blurb } = profileUpdate.body;
         const userId = new mongoose.Types.ObjectId(user);
 
-        return ProfileModel.updateOne({ user: userId, hexCode, blurb });
+        return await ProfileModel.updateOne({ user: userId, hexCode, blurb });
     } catch(err: any) {
         throw new Error(err);
     }
 }
 
-export async function createUserProfile() {
+export async function createUserProfile(user: string) {
     try {
-        return null;
+        const userId = new mongoose.Types.ObjectId(user);
+
+        return await ProfileModel.create({ user: userId });
     } catch(err: any) {
         throw new Error(err);
     }

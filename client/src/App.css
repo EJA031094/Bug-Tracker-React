@@ -26,6 +26,7 @@ h1 {
   background-color: rgb(255, 255, 255);
   border-radius: 0.25rem;
   margin: 0.5rem 0.5rem;
+  width: 100%;
 }
 
 .hover-color {
@@ -38,7 +39,9 @@ h1 {
 }
 
 .page-body {
-  max-width:1000px;
+  display: flex;
+  justify-content: center;
+  max-width: 1000px;
   margin: 2rem 0;
   width: 100%;
 }
