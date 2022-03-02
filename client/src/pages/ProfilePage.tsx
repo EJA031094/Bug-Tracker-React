@@ -45,7 +45,7 @@ export function ProfilePage() {
     return(
         <Box component='div' className='page-body'>
             <Card className='form-body'>
-                <CardHeader title={`${  }`} className='default-colors' />
+                <CardHeader title={`${ userContext?.user }`} className='default-colors' />
 
                 <CardContent>
                     <Box component='div'>
