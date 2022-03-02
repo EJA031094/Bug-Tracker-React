@@ -28,6 +28,7 @@ export function UserProvider({children}: {children: ReactElement}) {
         setUser(undefined);
     
         const response = await ProcessLogout();
+        localStorage.removeItem('userData');
 
         if(response.ok) {
             navigate('/');

@@ -12,7 +12,7 @@ To run the server application on your machine, follow these instructions.
 
 1) Rename config/default_example.ts to config/default.ts
 2) Replace the 'YOUR_X_HERE' strings in default.ts
-   - Port Number
+   - Host Name/Port Number
    - DB Connstring pointing to a MongoDB database
    - RSA Public/Private keys
 3) Navigate to the server folder in the terminal and execute 'npm install' and 'npm start'

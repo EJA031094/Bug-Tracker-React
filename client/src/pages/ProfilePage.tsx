@@ -63,7 +63,7 @@ export function ProfilePage({ userId }: { userId: string }) {
     }
 
     return(
-        <Box component='div' className="page-body">
+        <Box component='div' className='page-body'>
             <Card className='form-body'>
                 <CardHeader title={`${ user?.username }`} className='default-colors' />
 
